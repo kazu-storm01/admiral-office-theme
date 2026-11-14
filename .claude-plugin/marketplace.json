@@ -1,0 +1,13 @@
+{
+  "name": "admiral-office-theme",
+  "description": "提督室テーマ（Claude 用カスタムテーマ mod）",
+  "owner": {
+    "name": "kazu-storm01"
+  },
+  "plugins": [
+    {
+      "name": "admiral-office",
+      "source": "./"
+    }
+  ]
+}
