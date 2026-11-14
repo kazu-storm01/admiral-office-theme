@@ -37,10 +37,33 @@ const { theme, problems } = makeColors({
 
 const SCENE_NAME = 'admiral-office-sea'
 
-const LOOK: ThemeSetArgs = {
-  colors: theme,
-  backdrop: { scene: SCENE_NAME, glass: { blur: 14, opacity: 0.72 } },
+const GLASS = { blur: 14, opacity: 0.72 }
+
+// Claude Code 2.1.325 以降は backdrop の名前を `scene`、それより前（デスクトップアプリ同梱の
+// 2.1.321 など）は `id` で受け取る。知らない名前は拒否されるので、新しい形から順に試す。
+const LOOKS = [
+  { colors: theme, backdrop: { scene: SCENE_NAME, glass: GLASS } },
+  { colors: theme, backdrop: { id: SCENE_NAME, glass: GLASS } },
+] as unknown as ThemeSetArgs[]
+
+type ThemeApi = { theme: { set: (look: ThemeSetArgs) => Promise<{ isDrawn: true } | { isDrawn: false; reason: string }> } }
+
+const setLook = async ($: ThemeApi) => {
+  let refused: unknown
+
+  for (const look of LOOKS) {
+    try {
+      return await $.theme.set(look)
+    } catch (error) {
+      refused = error
+    }
+  }
+  throw refused
 }
+
+// Backdrop の props も同じく、新しい版は `scene`、古い版は `id`。
+const sceneOf = (props: object): unknown =>
+  (props as { scene?: unknown }).scene ?? (props as { id?: unknown }).id
 
 export const register: Register = on => {
   on('session.start', async ($, e, next) => {
@@ -49,7 +72,7 @@ export const register: Register = on => {
     if (unpainted !== undefined) {
       $.ui.toast(unpainted)
     }
-    const set = await $.theme.set(LOOK)
+    const set = await setLook($)
 
     if (!set.isDrawn) {
       $.ui.status(set.reason)
@@ -59,7 +82,7 @@ export const register: Register = on => {
   })
 
   on('ui.render', { component: 'Backdrop' }, ($, e, next) => {
-    if (e.props.scene !== SCENE_NAME || (e.surface !== 'desktop' && e.surface !== 'mobile')) {
+    if (sceneOf(e.props) !== SCENE_NAME || (e.surface !== 'desktop' && e.surface !== 'mobile')) {
       return next(e)
     }
     const { Svg } = $.ui.resolve(e)
