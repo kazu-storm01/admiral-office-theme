@@ -37,7 +37,7 @@ const { theme, problems } = makeColors({
 
 const SCENE_NAME = 'admiral-office-sea'
 
-const GLASS = { blur: 14, opacity: 0.72 }
+const GLASS = { blur: 14, opacity: 0.82 }
 
 // Claude Code 2.1.325 以降は backdrop の名前を `scene`、それより前（デスクトップアプリ同梱の
 // 2.1.321 など）は `id` で受け取る。知らない名前は拒否されるので、新しい形から順に試す。

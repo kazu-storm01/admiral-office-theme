@@ -11,7 +11,7 @@ test('theme.set is accepted and the backdrop draws on desktop', async ($, on) =>
 
   const ui = await $.ui.mount({
     plugin: 'admiral-office', component: 'Backdrop', requestId: 'backdrop', surface: 'desktop',
-    props: { ...seen.backdrop, plugin: 'admiral-office', glass: { blur: 14, opacity: 0.72 } },
+    props: { ...seen.backdrop, plugin: 'admiral-office', glass: { blur: 14, opacity: 0.82 } },
   } as any)
   const svg = await ui.find({ type: 'Svg' } as any)
   expect(svg).toBeTruthy()

@@ -71,19 +71,19 @@ export const SCENE = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 
     <circle class="st" cx="350" cy="230" r="1"/><circle class="st" cx="860" cy="230" r="1.6"/>
   </g>
 </g>
-<rect class="night" y="620" width="1600" height="380" fill="url(#seaN)"/>
-<rect class="day" y="620" width="1600" height="380" fill="url(#seaD)"/>
-<line x1="0" y1="620" x2="1600" y2="620" class="inkS" stroke-opacity=".35" stroke-width="1"/>
-<g class="fleet">
-  <use href="#ship" class="ship" x="0" y="612" transform="scale(1)"/>
-  <use href="#ship" class="ship" x="190" y="614" opacity=".85"/>
-  <use href="#ship" class="ship" x="360" y="616" opacity=".7"/>
-</g>
-<g transform="translate(0 700)"><g class="a3"><use href="#wave" class="w1"/><use href="#wave" class="crest"/></g></g>
-<g transform="translate(0 790)"><g class="a2"><use href="#wave" class="w2"/><use href="#wave" class="crest"/></g></g>
-<g transform="translate(0 880)"><g class="a1"><use href="#wave" class="w3"/><use href="#wave" class="crest"/></g></g>
-<svg x="0" y="0" width="1600" height="1000" viewBox="0 0 400 400" preserveAspectRatio="xMaxYMin meet">
-  <g transform="translate(300 100)" opacity=".55">
+<rect class="night" y="820" width="1600" height="180" fill="url(#seaN)"/>
+<rect class="day" y="820" width="1600" height="180" fill="url(#seaD)"/>
+<line x1="0" y1="820" x2="1600" y2="820" class="inkS" stroke-opacity=".35" stroke-width="1"/>
+<g class="fleet"><g transform="translate(0 820) scale(.7)" opacity=".75">
+  <use href="#ship" class="ship" x="0" y="-8"/>
+  <use href="#ship" class="ship" x="190" y="-6" opacity=".85"/>
+  <use href="#ship" class="ship" x="360" y="-4" opacity=".7"/>
+</g></g>
+<g transform="translate(0 860)"><g class="a3"><use href="#wave" class="w1"/><use href="#wave" class="crest"/></g></g>
+<g transform="translate(0 910)"><g class="a2"><use href="#wave" class="w2"/><use href="#wave" class="crest"/></g></g>
+<g transform="translate(0 955)"><g class="a1"><use href="#wave" class="w3"/><use href="#wave" class="crest"/></g></g>
+<svg x="0" y="0" width="1600" height="1000" viewBox="0 0 1000 1000" preserveAspectRatio="xMaxYMin meet">
+  <g transform="translate(890 180) scale(.9)" opacity=".4">
     <circle r="78" fill="none" class="inkS" stroke-width="1.2"/>
     <circle r="70" fill="none" class="inkS" stroke-width=".6" stroke-dasharray="2 4"/>
     <g class="rose">
